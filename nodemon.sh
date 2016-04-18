@@ -1,2 +1,2 @@
 date
-time node node_modules/node-debug/bin/node-debug.js index.js
+time node node_modules/nodemon/bin/nodemon.js index.js

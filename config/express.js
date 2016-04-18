@@ -4,9 +4,9 @@ var bodyParser = require('body-parser');
 
 module.exports = function () {
   var app = express();
+  var ExpressValidator = require('express-validator');
 
-  app.use(bodyParser.urlencoded({extended:	true}));
-  app.use(bodyParser.json());
+  app.use(ExpressValidator());
 
   load('controllers',{cwd:'app'})
     .then('infra')
