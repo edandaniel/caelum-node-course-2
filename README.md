@@ -68,6 +68,8 @@ e.g. se criar usa 201 em vez de 200
 Resposta da chamada da API apresenta possiveis chamadas futuras,
 funcionando como maquina de estado
 
+Um dos principios REST
+
           />CONFIRMADO (PUT)
 CRIADO----
           \\>CANCELADO (DELETE)
