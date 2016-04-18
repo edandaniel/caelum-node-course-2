@@ -9,6 +9,7 @@ module.exports = function () {
   app.use(bodyParser.json());
 
   load('controllers',{cwd:'app'})
+    .then('infra')
     .into(app);
 
   return app;

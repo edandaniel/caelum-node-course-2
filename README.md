@@ -33,15 +33,7 @@ ou [shorturl](http://bit.ly/node-avancado-itau)
 ## exemplo de chamada
 
 ```curl
-  curl -X POST -v
-    http://localhost:3000/pagamentos/pagamentos
-  -d {
-    'moeda':'BRL'
-    'tipo':'payfast'
-    'valor':'10'
-    'dados_do_cartao':'5000.XXXX.XXXX.1234'
-  }
-  -H 'Content-type: application/json'
+curl http://localhost:3000/pagamentos/pagamento -X POST -v -d '{"moeda":"BRL","forma_de_pagamento:"payfast","valor":"10","descricao":"descricaodacompra"}' -H 'Content-type: application/json'
 ```
 |H|Muda o header|
 |d|data|

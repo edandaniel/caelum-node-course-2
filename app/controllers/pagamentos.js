@@ -4,9 +4,21 @@ module.exports = function(app){
   });
 
   app.post('/pagamentos/pagamento',function(req,res){
-    console.log(req.body);
     var pagamento = req.body;
-    console.log(pagamento);    
-    res.status(201).json(pagamento);
+    pagamento.status = 'CRIADO';
+    pagamento.data = new Date();
+    console.log(pagamento);
+    debugger;
+    var conn = app.infra.connectionFactory();
+    var dao  = new app.infra.PagamentoDao(conn);
+    dao.salva(pagamento, function(error,result){
+      if(error){
+        console.log(error);
+        res.status(503).json(error);
+      }else{
+        console.log('pag ok');
+        res.status(201).json(pagamento);
+      }
+    });
   });
 }
