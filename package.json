@@ -24,6 +24,7 @@
     "body-parser": "~1.15.0"
   },
   "devDependencies": {
-    "node-debug": "~0.1.0"
+    "node-debug": "~0.1.0",
+    "nodemon": "~1.9.1"
   }
 }
