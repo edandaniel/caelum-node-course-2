@@ -24,7 +24,7 @@ module.exports = function(app){
     var dao  = new app.infra.PagamentoDao(conn);
 
     var response = {
-      dados_do_pagamento = pagamento,
+      dados_do_pagamento : pagamento,
       links:[
       {
         href:"http://localhost:3000/pagamentos/pagamento/2",
@@ -37,7 +37,8 @@ module.exports = function(app){
           method:'DELETE'
         }
       ]
-    }
+    };
+    res.status(201).json(response);
 
     dao.salva(pagamento, function(error,result){
       if(error){
@@ -47,7 +48,7 @@ module.exports = function(app){
         var id = result.insertID;
         res.location('/pagamentos/pagamento/'+id);
         pagamento.id = id;
-        res.status(201).json(pagamento);
+        res.status(201).json(response);
       }
     });
   });
