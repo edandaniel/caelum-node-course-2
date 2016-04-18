@@ -61,3 +61,27 @@ e.g. se criar usa 201 em vez de 200
 |300|Moved|
 |400|Error|
 |500|Server error|
+
+## HATEOAS
+### Hypertext As The Engine Of Application State
+
+Resposta da chamada da API apresenta possiveis chamadas futuras,
+funcionando como maquina de estado
+
+          />CONFIRMADO (PUT)
+CRIADO----
+          \\>CANCELADO (DELETE)
+
+json
+links:[
+{
+  href:"http://.../pagamentos/pagamento/2",
+  rel:'Confirmar',
+  method:'PUT'
+  },
+  {
+    href:"http://.../pagamentos/pagamento/2",
+    rel:'Cancelar',
+    method:'DELETE'
+  }
+]

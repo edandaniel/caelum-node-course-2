@@ -3,6 +3,7 @@ module.exports = function(app){
     res.send('opa, deu certo ein.');
   });
 
+
   app.post('/pagamentos/pagamento',function(req,res){
     req.assert('forma_de_pagamento','forma pag obrig')
       .notEmpty();
@@ -21,6 +22,22 @@ module.exports = function(app){
 
     var conn = app.infra.connectionFactory();
     var dao  = new app.infra.PagamentoDao(conn);
+
+    var response = {
+      dados_do_pagamento = pagamento,
+      links:[
+      {
+        href:"http://localhost:3000/pagamentos/pagamento/2",
+        rel:'Confirmar',
+        method:'PUT'
+        },
+        {
+          href:"http://localhost:3000/pagamentos/pagamento/2",
+          rel:'Cancelar',
+          method:'DELETE'
+        }
+      ]
+    }
 
     dao.salva(pagamento, function(error,result){
       if(error){
