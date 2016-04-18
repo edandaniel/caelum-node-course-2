@@ -27,3 +27,45 @@ ou [shorturl](http://bit.ly/node-avancado-itau)
   - "--save" keeps info in package json
 - npm install **express-load** _--save_
 - node index.js
+
+# HTTP
+
+## exemplo de chamada
+
+```curl
+  curl -X POST -v
+    http://localhost:3000/pagamentos/pagamentos
+  -d {
+    'moeda':'BRL'
+    'tipo':'payfast'
+    'valor':'10'
+    'dados_do_cartao':'5000.XXXX.XXXX.1234'
+  }
+  -H 'Content-type: application/json'
+```
+|H|Muda o header|
+|d|data|
+|v|verbose|
+
+## HTTP se baseia em recurso + verbo + Headers
+
+| Recurso | Verbo
+|---|
+|/pagamentos|GET|
+|/pagamentos|POST|
+|/pagamentos/id|PUT|
+|/pagamentos/id|DELETE|
+
+## Status codes
+
+Importante usar codigos que sejam uteis para maquinas
+e.g. se criar usa 201 em vez de 200
+
+|#|Descrição|
+|-|-|
+|101|Conexão permanente/socket|
+|200|OK|
+|201|Created|
+|300|Moved|
+|400|Error|
+|500|Server error|
