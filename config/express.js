@@ -7,6 +7,8 @@ module.exports = function () {
   var ExpressValidator = require('express-validator');
 
   app.use(ExpressValidator());
+  app.use(bodyParser.urlencoded({extended:	true}));
+  app.use(bodyParser.json()); 
 
   load('controllers',{cwd:'app'})
     .then('infra')

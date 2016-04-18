@@ -4,10 +4,10 @@ module.exports = function(app){
   });
 
   app.post('/pagamentos/pagamento',function(req,res){
-    req.assert('forma_de_pagamento','forma pag obrig').
-      notEmpty();
-    req.assert('moeda','moeda obrig e 3 char').
-      notEmpty().len(3,3);
+    req.assert('forma_de_pagamento','forma pag obrig')
+      .notEmpty();
+    req.assert('moeda','moeda obrig e 3 char')
+      .notEmpty().len(3,3);
 
     var errors = req.validationErrors();
     if(errors){
@@ -21,9 +21,6 @@ module.exports = function(app){
 
     var conn = app.infra.connectionFactory();
     var dao  = new app.infra.PagamentoDao(conn);
-
-    app.use(bodyParser.urlencoded({extended:	true}));
-    app.use(bodyParser.json());
 
     dao.salva(pagamento, function(error,result){
       if(error){
