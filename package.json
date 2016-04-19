@@ -24,7 +24,8 @@
     "body-parser": "~1.15.0",
     "mysql": "~2.10.2",
     "express-validator": "~2.20.3",
-    "restify": "~4.0.4"
+    "restify": "~4.0.4",
+    "soap": "~0.14.0"
   },
   "devDependencies": {
     "node-debug": "~0.1.0",

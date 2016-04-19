@@ -32,9 +32,9 @@ ou [shorturl](http://bit.ly/node-avancado-itau)
 
 ## exemplo de chamada
 
-```curl
-curl http://localhost:3000/pagamentos/pagamento -X POST -v -d '{"moeda" : "BRL" , "forma_de_pagamento" : "payfast" , "valor"  : "10","descricao" : "descricaodacompra"}' -H 'Content-type: application/json'
-```
+
+    curl http://localhost:3000/pagamentos/pagamento -X POST -v -d '{"moeda" : "BRL" , "forma_de_pagamento" : "payfast" , "valor"  : "10","descricao" : "descricaodacompra"}' -H 'Content-type: application/json'
+
 |H|Muda o header|
 |d|data|
 |v|verbose|
@@ -89,7 +89,9 @@ links:[
 ]
 ```
 
-## Consumindo services (usando sistema externo pra validar cartao)
+##  REST:  Representational State Transfer. Consumindo services (usando sistema externo pra validar cartao)
+
+Exemplo usado : verificar se um cartao é valido
 
 ```JavaScript
 /pagamentos/pagamento
@@ -107,6 +109,11 @@ links:[
 }
 ```
 
-```curl
-curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":	{	"forma_de_pagamento":	"cartao",	"valor":	"10.87",	"moeda":	"BRL",	"descricao":	"descrição	do	pagamento"},  "cartao":	{  "numero":	"1234567890123456",	"bandeira":	"VISA",	"ano_de_expiracao":	"2020",	"mes_de_expiracao":	"12",	"cvv":	"123"	}}'
-```
+    curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":	{	"forma_de_pagamento":	"cartao",	"valor":	"10.87",	"moeda":	"BRL",	"descricao":	"descrição	do	pagamento"},  "cartao":	{  "numero":	"1234567890123456",	"bandeira":	"VISA",	"ano_de_expiracao":	"2020",	"mes_de_expiracao":	"12",	"cvv":	"123"	}}'
+
+
+## SOAP Simple Object Access Protocol:
+
+Exemplo: pegar dos correios prazo de entrega, preço de frete, etc
+
+    curl http://localhost:3000/correios/calculo-prazo -X GET -v -H "Content-type: application/json" -d '{"nCdServico":	"40010","sCepOrigem":	"05303030","sCepDestino":"65066635"}'
