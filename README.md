@@ -116,4 +116,11 @@ Exemplo usado : verificar se um cartao é valido
 
 Exemplo: pegar dos correios prazo de entrega, preço de frete, etc
 
-    curl http://localhost:3000/correios/calculo-prazo -X GET -v -H "Content-type: application/json" -d '{"nCdServico":	"40010","sCepOrigem":	"05303030","sCepDestino":"65066635"}'
+    curl -X GET -H "Content-type: application/json" -H "Cache-Control: no-cache"  "http://localhost:3000/correios/calculo-prazo?nCdServico=40010&sCepOrigem=05303030&sCepDestino=65066635"
+
+possivel usar
+    -d @arquivo.json
+
+## File
+
+    curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @/home/jpa5825/caelum-node-course-2/app/teste.doc
