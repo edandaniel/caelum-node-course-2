@@ -74,7 +74,7 @@ Um dos principios REST
 CRIADO----
           \\>CANCELADO (DELETE)
 
-json
+```JavaScript
 links:[
 {
   href:"http://.../pagamentos/pagamento/2",
@@ -87,3 +87,26 @@ links:[
     method:'DELETE'
   }
 ]
+```
+
+## Consumindo services (usando sistema externo pra validar cartao)
+
+```JavaScript
+/pagamentos/pagamento
+{
+  dados_do_pagamento:{
+    ...
+  },
+  dados_do_cartao:{
+    nome:'John of Silva',
+    numero:'1234123412341234',
+    mes_exp:'12',
+    ano_exp:'2016',
+    cvv:'123'
+  }
+}
+```
+
+```curl
+curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":	{	"forma_de_pagamento":	"cartao",	"valor":	"10.87",	"moeda":	"BRL",	"descricao":	"descrição	do	pagamento"},  "cartao":	{  "numero":	"1234567890123456",	"bandeira":	"VISA",	"ano_de_expiracao":	"2020",	"mes_de_expiracao":	"12",	"cvv":	"123"	}}'
+```

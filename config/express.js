@@ -12,6 +12,7 @@ module.exports = function () {
 
   load('controllers',{cwd:'app'})
     .then('infra')
+    .then('services')
     .into(app);
 
   return app;

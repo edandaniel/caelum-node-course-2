@@ -7,6 +7,7 @@ module.exports = function(app){
     res.send('opa, deu certo ein.');
   });
 
+  //metodo para put e delete
   atualiza = function(req,res,tipo){
     var pagamento = req.body;
 
@@ -40,19 +41,56 @@ module.exports = function(app){
     atualiza(req,res,'delete');
   });
 
+  //metodo 'principal'
   app.post('/pagamentos/pagamento',function(req,res){
-    req.assert('forma_de_pagamento','forma pag obrig')
-      .notEmpty();
-    req.assert('moeda','moeda obrig e 3 char')
-      .notEmpty().len(3,3);
+    var body = req.body;
+    //separa entrada
+    var pagamento = body.pagamento;
+    var cartao = body.cartao;
+
+    //valida entrada
+    req.assert('pagamento.forma_de_pagamento','forma pag obrig').notEmpty();
+    req.assert("pagamento.valor",	"Valor	é	obrigatório	e	deve	ser	um	decimal.").notEmpty().isFloat();
+    req.assert('pagamento.moeda','moeda obrig e 3 char').notEmpty().len(3,3);
 
     var errors = req.validationErrors();
+
     if(errors){
       res.status(400).json(errors);
       return;
     }
 
-    var pagamento = req.body;
+    //trata SE cartao
+    if(pagamento.forma_de_pagamento === 'cartao'){
+      var clientCard = new app.services.CartoesClient();
+
+      clientCard.autoriza(cartao, function(error,request,response,result){
+        if(error){
+          console.log('Erro ao consultar serviço de cartoes');
+          res.status(400).json(error);
+          return;
+        }
+        console.log('Retorno	do	servico	de	cartoes:	%j',	result);
+        var response =	{
+					dados_do_pagamento:	pagamento,
+					cartao	:	result,
+					links:	[
+		       {
+						href:	"http://localhost:3000/pagamentos/pagamento/"	+	pagamento.id,
+						rel:	"confirmar",
+						method:	"PUT"
+	        },
+					{
+						href:	"http://localhost:3000/pagamentos/pagamento/"	+	pagamento.id,
+						rel:	"cancelar",
+						method:	"DELETE"
+					}]
+        }
+        res.status(201).json(response);
+      });
+      return;
+    }
+
     pagamento.status = 'CRIADO';
     pagamento.data = new Date();
 
