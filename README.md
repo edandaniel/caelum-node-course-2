@@ -189,3 +189,23 @@ possivel usar
 - redis
 - RIAK
 - Mongo
+
+# Logs:
+
+Informação disponivel e bem estruturada
+
+- +
+  - Rastreabilidade
+  - Historico
+    - Segmentar
+  - Ferramentas
+  - Parametrizar
+    - debug
+    - info
+    - error
+    - controle
+  - Stream
+
+- -
+  - infra
+  - escrever mais

@@ -39,8 +39,8 @@ module.exports = function(app){
   }
 
   app.get('/pagamentos',function(req,res){
-    if(is_version_invalid(req,res))
-      return;
+    var l = app.infra.logger.info;
+    l('teste');
     res.send('opa, deu certo ein.');
   });
 
