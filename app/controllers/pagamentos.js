@@ -3,7 +3,7 @@ const	PAGAMENTO_CONFIRMADO	=	"CONFIRMADO";
 const	PAGAMENTO_CANCELADO	=	"CANCELADO";
 
 module.exports = function(app){
-  is_version_ok = function(req,res){
+  is_version_invalid = function(req,res){
     var versao = req.headers.accept;
     if(versao!==('application/vnd.payfast.v1.json')){
       res.status(400).json({msg:'versao invalida!'});
@@ -39,20 +39,26 @@ module.exports = function(app){
   }
 
   app.get('/pagamentos',function(req,res){
+    if(is_version_invalid(req,res))
+      return;
     res.send('opa, deu certo ein.');
   });
 
   app.put('/pagamentos/pagamento',function(req,res){
+    if(is_version_invalid(req,res))
+      return;
     atualiza(req,res,'put');
   });
 
   app.delete('/pagamentos/pagamento',function(req,res){
+    if(is_version_invalid(req,res))
+      return;
     atualiza(req,res,'delete');
   });
 
   //metodo 'principal'
   app.post('/pagamentos/pagamento',function(req,res){
-    if(! is_version_ok(req,res))
+    if(is_version_invalid(req,res))
       return;
 
     var body = req.body;
