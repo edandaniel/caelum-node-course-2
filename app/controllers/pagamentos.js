@@ -44,6 +44,28 @@ module.exports = function(app){
     res.send('opa, deu certo ein.');
   });
 
+  app.get('/pagamentos/pagamento/:id',function(req,res){
+    var	id	=	req.params.id;
+		var	cache	= app.infra.memcachedClient();
+
+    console.log('id:	'	+	id);
+			cache.get('pagamento-'	+	id,	function	(err,	data)	{
+        if	(err	||	!data){
+          var	connection	=	app.infra.connectionFactory();
+          var	pagamentoDao	=	new	app.infra.PagamentoDao(connection);
+          pagamentoDao.buscaPorId(id,	function(exception,	resultado){
+          cache.set('pagamento-'	+	id,	resultado,	100000,	  function	(err)	{
+            console.log('nova	chave:	pagamento-'	+	id);
+			    });
+				res.status(200).json(resultado);
+				});
+			}	else{
+        console.log('TO USANDO CRACK DIGO CACH');
+	      res.status(200).json(data);
+			}
+		});
+	});
+
   app.put('/pagamentos/pagamento',function(req,res){
     if(is_version_invalid(req,res))
       return;

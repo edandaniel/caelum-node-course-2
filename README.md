@@ -181,6 +181,7 @@ possivel usar
     - Ferramentas Prontas
   - -
     - Limitação de memória (paginação)
+    - Configuração
 
 ## Ferramentas
 
