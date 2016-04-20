@@ -3,9 +3,14 @@ const	PAGAMENTO_CONFIRMADO	=	"CONFIRMADO";
 const	PAGAMENTO_CANCELADO	=	"CANCELADO";
 
 module.exports = function(app){
-  app.get('/pagamentos',function(req,res){
-    res.send('opa, deu certo ein.');
-  });
+  is_version_ok = function(req,res){
+    var versao = req.headers.accept;
+    if(versao!==('application/vnd.payfast.v1.json')){
+      res.status(400).json({msg:'versao invalida!'});
+      return false;
+    }
+    return true;
+  }
 
   //metodo para put e delete
   atualiza = function(req,res,tipo){
@@ -33,6 +38,10 @@ module.exports = function(app){
     });
   }
 
+  app.get('/pagamentos',function(req,res){
+    res.send('opa, deu certo ein.');
+  });
+
   app.put('/pagamentos/pagamento',function(req,res){
     atualiza(req,res,'put');
   });
@@ -43,6 +52,9 @@ module.exports = function(app){
 
   //metodo 'principal'
   app.post('/pagamentos/pagamento',function(req,res){
+    if(! is_version_ok(req,res))
+      return;
+
     var body = req.body;
     //separa entrada
     var pagamento = body.pagamento;

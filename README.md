@@ -124,3 +124,44 @@ possivel usar
 ## File
 
     curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @/home/jpa5825/caelum-node-course-2/app/teste.doc
+
+## Versionamento
+
+## Estratégias
+
+- Strict
+  - Quebra a compatibilidade semmpre.
+  - Sazonal
+    - e.g. IRPF - 2016
+
+- Flexible
+  - Se for compativel com a anterior, não quebro
+  - Novas funcionalidades
+  - Bugfix
+
+- Loose
+  - Sempre compativel
+    - Foward
+    - Backward
+
+### e.g.
+
+- Ponte
+  - Cascata
+  - Engenharia tradicional
+  - Depois de construida nada muda
+
+- APP
+  - muda rapido e muitas vezes
+  - precisa alertar cliente quando muda
+
+## Compatible Change
+
+- URI
+  - localhost:3000/pagamentos/ve/pag
+
+- Header
+  - Accept: application/vnd.payfast.v1
+
+- Query String
+  - URI?version=v1
