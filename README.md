@@ -209,3 +209,10 @@ Informação disponivel e bem estruturada
 - -
   - infra
   - escrever mais
+
+# Cross Original Calls
+
+- **C**ross
+- **O**rigin
+- **R**esource
+- **S**haring
