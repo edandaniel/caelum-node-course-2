@@ -1,0 +1,43 @@
+   11  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+   26  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+   41  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+   56  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+   71  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+   86  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  101  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  116  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  131  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  146  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  161  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  176  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  191  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  206  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  221  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  236  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  251  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  266  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  281  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json"-d '{\
+  296  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{\
+  311  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{\
+  326  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{\
+  341  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{\
+  356  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":{"forma_de_pagamento":"cartao","valor":"10.87","moeda":"BRL","descricao":"descriçãodopagamento"},  "cartao":{  "numero":"1234567890123456","bandeira":"VISA","ano_de_expiracao":"2020","mes_de_expiracao":"12","cvv":"12"}}'
+  357  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":{"forma_de_pagamento":"cartao","valor":"10.87","moeda":"BRL","descricao":"descriçãodopagamento"},  "cartao":{  "numero":"1234567890123456","bandeira":"VISA","ano_de_expiracao":"2020","mes_de_expiracao":"12","cvv":"123"}}'
+  358  curl -XGET-v-H"Content-type:application/json"http://localhost:3000/correios/calculo-prazo-d'{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
+  359  curl http://localhost:3000/correios/calculo-prazo -X GET -v -H "Content-type: application/json" -d '{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
+  360  curl -XGET-v-H"Content-type:application/json"http://localhost:3000/correios/calculo-prazo-d'{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
+  361  curl http://localhost:3000/correios/calculo-prazo -X GET -v -H "Content-type: application/json" -d '{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
+  425  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : teste.doc" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip
+  429  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : teste.doc" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip
+  432  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : teste.doc" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip
+  434  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : teste.doc" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip"
+  436  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : teste.doc" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip";
+  437  curl "http://localhost:3000/upload" -X POST --data-binary @teste.doc -H "filename : 'teste.doc'" -H "Content-type: application/octet-stream" -H "Content-encoding: gzip";
+  439  curl -XPOSThttp://localhost:3000/upload/gzip-v-H"filename:teste.doc"-H"Content-Type:application/octet-stream"-H"Content-Encoding:gzip"--data-binary@missao1
+  440  curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @missao1
+  441  curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @teste.doc
+  443  curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @./teste.doc
+  444  curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @teste.doc
+  446  curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @/home/jpa5825/caelum-node-course-2/app/teste.doc
+  499  curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":{"forma_de_pagamento":"cartao","valor":"10.87","moeda":"BRL","descricao":"descriçãodopagamento"},  "cartao":{  "numero":"1234567890123456","bandeira":"VISA","ano_de_expiracao":"2020","mes_de_expiracao":"12","cvv":"12"}}'
+  507  history | grep curl > teste.txt

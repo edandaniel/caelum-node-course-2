@@ -62,8 +62,8 @@ e.g. se criar usa 201 em vez de 200
 |400|Error|
 |500|Server error|
 
-## HATEOAS
-### Hypertext As The Engine Of Application State
+# HATEOAS
+## Hypertext As The Engine Of Application State
 
 Resposta da chamada da API apresenta possiveis chamadas futuras,
 funcionando como maquina de estado
@@ -89,7 +89,7 @@ links:[
 ]
 ```
 
-##  REST:  Representational State Transfer. Consumindo services (usando sistema externo pra validar cartao)
+#  REST:  Representational State Transfer. Consumindo services (usando sistema externo pra validar cartao)
 
 Exemplo usado : verificar se um cartao é valido
 
@@ -112,7 +112,7 @@ Exemplo usado : verificar se um cartao é valido
     curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":	{	"forma_de_pagamento":	"cartao",	"valor":	"10.87",	"moeda":	"BRL",	"descricao":	"descrição	do	pagamento"},  "cartao":	{  "numero":	"1234567890123456",	"bandeira":	"VISA",	"ano_de_expiracao":	"2020",	"mes_de_expiracao":	"12",	"cvv":	"123"	}}'
 
 
-## SOAP Simple Object Access Protocol:
+# SOAP Simple Object Access Protocol:
 
 Exemplo: pegar dos correios prazo de entrega, preço de frete, etc
 
@@ -121,11 +121,11 @@ Exemplo: pegar dos correios prazo de entrega, preço de frete, etc
 possivel usar
     -d @arquivo.json
 
-## File
+# File
 
-    curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @/home/jpa5825/caelum-node-course-2/app/teste.doc
+    curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.doc" -H "Content-Type: application/octet-stream" -H "Content-Encoding: application/gzip" --data-binary @/home/jpa5825/caelum-node-course-2/app/teste.doc
 
-## Versionamento
+# Versionamento
 
 ## Estratégias
 
@@ -165,3 +165,26 @@ possivel usar
 
 - Query String
   - URI?version=v1
+
+# Cache
+
+- Cliente
+  - +
+    - Evita requisicoes
+  - -
+    - Cliente precisa implementar
+    - Cliente pode ignorar
+
+- Servidor
+  - +
+    - Armazena os dados na memória
+    - Ferramentas Prontas
+  - -
+    - Limitação de memória (paginação)
+
+## Ferramentas
+
+- memcached
+- redis
+- RIAK
+- Mongo
