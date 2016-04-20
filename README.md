@@ -213,6 +213,26 @@ Informação disponivel e bem estruturada
 # Cross Original Calls
 
 - **C**ross
+
 - **O**rigin
+
 - **R**esource
+
 - **S**haring
+****
+---
+# Escalabilidade
+
+- Vertical (1 máquina, +proc e +mem)
+  - +
+    - Mais facil de gerenciar
+  - -
+    - SPOF (Single Point of Failure)
+    - Mais cara
+
+- Horizontal
+  - +
+    - Disponibilidade
+    - Mais barata
+  - -
+    - Nova Complexidade (deploys etc)
